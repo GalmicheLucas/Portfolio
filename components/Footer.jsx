@@ -7,7 +7,7 @@ const Footer = () => {
             {/* Logo tout à gauche */}
             <div className="logo">
                 <Link href="/">
-                    <img src="/Logo/logo_avec_nom.png" alt="Logo" />
+                    <img src="/Logo/logo_avec_nom.PNG" alt="Logo" />
                 </Link>
             </div>
 

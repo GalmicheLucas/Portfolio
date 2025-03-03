@@ -6,7 +6,7 @@ const Header = () => {
       <div className="logo">
         {/* Enveloppe l'image dans le composant Link pour rediriger vers la page d'accueil */}
         <Link href="/">
-          <img src="\Logo\logo_avec_nom.png" alt="Logo" />
+          <img src="/Logo/logo_avec_nom.PNG" alt="Logo" />
         </Link>
       </div>
       <div className="header_title">
