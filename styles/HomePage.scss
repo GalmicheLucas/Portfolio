@@ -1,0 +1,603 @@
+/* Animation du fond */
+@keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Animation pour déplacer la couverture */
+  @keyframes move-cover-image {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100vh); /* Déplace la couverture vers le haut */
+    }
+  }
+  
+  /* Applique l'animation lorsque la classe move-image est ajoutée */
+  .cover.move-image {
+    animation: move-cover-image 1s forwards ease-in-out;
+  }
+  
+  /* Contenu de la page */
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Toujours au-dessus */
+    background: linear-gradient(120deg, #8e86b5, #acaeed,#6c63ff);  //#C49FFF, #DC98BD, #7D4FF//
+    background-size: 200% 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: gradient-move 10s ease infinite;
+    
+    /* Conteneur principal */
+    .welcome-container {
+      text-align: center;
+      z-index: 2;
+  
+      /* Texte de bienvenue */
+      .welcome-text {
+        font-family: 'Satisfy', cursive;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour lisibilité */
+        margin-bottom: 20px;
+  
+        /* Effet de texte animé */
+        .typing-effect {
+          display: inline-block;
+          border-right: 2px solid #fff;
+          white-space: nowrap;
+          overflow: hidden;
+          animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+        }
+  
+        /* Animation de la main 👋 */
+        .wave {
+          position: absolute;
+          display: inline-block;
+          animation: waving-hand 2s infinite;
+          transform-origin: 70% 70%;
+        }
+      }
+  
+      /* Bouton CTA */
+      .cta-button {
+        position: relative;
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(120deg, #FF85C2, #FF69B4);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet de profondeur */
+        transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  
+        &:hover {
+          transform: scale(1.05);
+          background: linear-gradient(120deg, #FF69B4, #FF85C2);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombre accentuée */
+        }
+      }
+    }
+  
+    /* Contenu caché après l'animation */
+    .hidden-content {
+      display: block;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      margin-top: 20px;
+      z-index: 1;
+    }
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espacement entre les sections */
+    justify-content: center;
+    
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: white;
+  }
+  
+  #about {
+    display: flex;
+    flex-wrap: wrap; /* Permet à l'image et au texte de s'adapter sur petits écrans */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    color: #f9f8ff;
+  
+    &-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 600px;
+    }
+  
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: #a5b4fc;
+      width: 100%;
+      font-weight: bolder;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  
+    p {
+      width: 100%; /* Full width pour mobiles */
+      max-width: 500px; /* Limite la largeur sur grands écrans */
+      text-align: left;
+      margin-bottom: 20px;
+      font-size: 1.1em
+    }
+  
+    ul {
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+      width: 90%;
+  
+      li {
+        margin: 10px 0;
+        font-size: 1rem;
+      }
+    }
+  
+    img {
+      width: 300px;
+      border-radius: 20%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  #illustrations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: #121212;
+  
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ffffff; // Contraste amélioré
+    }
+  
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); // Toujours 3 colonnes
+      gap: 0; // Pas d’espace entre les cartes
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px; // Limite la largeur totale
+    }
+  
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+  
+      // Pour que l'image remplisse toute la carte
+      display: flex;
+      align-items: stretch;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // L'image remplit l'espace sans déformation
+        transition: transform 0.3s ease;
+      }
+  
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 1.2rem;
+      }
+  
+      &:hover {
+        img {
+          transform: scale(1.05); // Légère animation au survol
+        }
+  
+        .overlay {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  
+  #projects {
+    background: #121212;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  #contact {
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+  
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #a5b4fc;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #d1d5db;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+  
+      .form-group {
+        display: flex;
+        gap: 150px;
+        padding: 15px;
+        flex-wrap: wrap;
+      }
+  
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-bottom: 20px;
+  
+        label {
+          margin-bottom: 8px;
+          font-size: 1rem;
+          font-weight: 600;
+          color: #ffffff;
+        }
+  
+        input, 
+        textarea {
+          padding: 12px;
+          border: 1px solid #333;
+          border-radius: 8px;
+          font-size: 1rem;
+          background: #121212;
+          color: #ffffff;
+          outline: none;
+          transition: border-color 0.3s ease;
+          width: 100%;
+  
+          &:focus {
+            border-color: #6c63ff;
+          }
+        }
+  
+        textarea {
+          resize: none;
+          border: none;
+        }
+      }
+  
+      button[type="submit"] {
+        padding: 20px 30px;
+        width: 22%;
+        margin: 0 auto;
+        background: linear-gradient(#8e86b5, #acaeed);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background: linear-gradient(#696484, #140342);
+        }
+      }
+    }
+  
+    #nom, #email {
+      flex-grow: 2;
+      background: #121212;
+    }
+  }
+  
+  // Responsive Design
+  @media (max-width: 768px) {
+    #contact form .form-nom-email {
+      flex-direction: column;
+    }
+  }
+  
+  
+  a {
+    color: #a5b4fc;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Animation d'écriture */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Clignotement du curseur */
+  @keyframes blink {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+  }
+  
+  /* Animation de la main 👋 */
+  @keyframes waving-hand {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  // Responsive Design Centralisé
+  
+  // Petits appareils (max-width: 768px)
+  @media (max-width: 768px) {
+    .fullscreen {
+      padding: 20px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 96vh;
+      .welcome-container {
+        h1 {
+          font-size: 1.8rem;
+          text-align: center;
+          line-height: 1.5;
+        }
+  
+        .cta-button {
+          font-size: 1rem;
+          padding: 10px 20px;
+          margin-top: 15px;
+        }
+      }
+    }
+  
+    #about {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+      height: auto;
+  
+      &-text {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+  
+      h1 {
+        font-size: 1.6rem;
+      }
+  
+      p {
+        font-size: 1rem;
+      }
+  
+      ul {
+        width: 100%;
+        text-align: center;
+      }
+  
+      img {
+        width: 200px;
+        margin: 20px auto;
+      }
+    }
+  
+    #illustrations {
+      padding: 20px 10px;
+  
+      h2 {
+        font-size: 1.5rem;
+      }
+  
+      .projects-grid {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 20px;
+      }
+    }
+  
+    #contact {
+      padding: 20px;
+  
+      h2 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+  
+      p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+  
+      form {
+        .form-group {
+          flex-direction: column;
+          gap: 20px;
+        }
+  
+        button[type="submit"] {
+          width: 100%;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  // Appareils moyens (max-width: 1024px)
+  @media (max-width: 1024px) {
+    .fullscreen {
+      .welcome-container {
+        h1 {
+          font-size: 2.2rem;
+        }
+  
+        .cta-button {
+          font-size: 1.1rem;
+          padding: 12px 24px;
+        }
+      }
+    }
+  
+    #about {
+      gap: 15px;
+  
+      &-text {
+        max-width: 80%;
+        text-align: center;
+      }
+  
+      img {
+        width: 250px;
+      }
+    }
+  
+    #illustrations {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+        gap: 20px;
+      }
+  
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  
+    #contact {
+      form {
+        .form-group {
+          gap: 30px;
+        }
+      }
+    }
+  }
+  
+  // Appareils larges (au-dessus de 1024px)
+  @media (min-width: 1025px) {
+    .fullscreen {
+      .welcome-container {
+        h1 {
+          font-size: 3rem;
+        }
+  
+        .cta-button {
+          font-size: 1.2rem;
+          padding: 15px 30px;
+        }
+      }
+    }
+  
+    #about {
+      flex-direction: row;
+      gap: 40px;
+  
+      &-text {
+        max-width: 50%;
+      }
+  
+      img {
+        width: 300px;
+      }
+    }
+  
+    #illustrations {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+      }
+    }
+  
+    #contact {
+      form {
+        max-width: 800px;
+  
+        .form-group {
+          flex-direction: row;
+          gap: 50px;
+        }
+  
+        button[type="submit"] {
+          width: auto;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }

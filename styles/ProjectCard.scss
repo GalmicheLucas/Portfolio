@@ -1,0 +1,86 @@
+.project-card {
+    background: black; /* Fond sombre moderne */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre douce */
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation fluide */
+    text-align: center;
+    max-width: 320px; /* Limite la largeur des cartes */
+    flex-grow: 1;
+    flex-basis: calc(33.333% - 30px); /* Trois cartes par ligne */
+    box-sizing: border-box;
+    cursor: pointer;
+  
+    &:hover {
+      transform: translateY(-8px); /* Léger effet d'élévation */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre renforcée */
+    }
+  
+    img {
+      display: block; /* Supprime les marges automatiques des images */
+      width: 100%; /* L'image occupe toute la largeur de la carte */
+      height: 200px; /* Fixe une hauteur uniforme */
+      object-fit: cover; /* L'image remplit l'espace sans déformation */
+      border-radius: 10px;
+      margin-bottom: 15px; /* Espacement en dessous de l'image */
+      transition: transform 0.3s ease;
+    }
+  
+    &:hover img {
+      transform: scale(1.05); /* Zoom léger sur l'image */
+    }
+  
+    h3 {
+      font-family: 'Manrope', sans-serif; /* Style moderne pour le titre */
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin: 10px 0;
+      color: #ffffff;
+    }
+  
+    p {
+      font-family: 'Roboto', sans-serif; /* Police lisible pour le texte */
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+  
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #6c63ff;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #9a81ff;
+      }
+    }
+  }
+  
+  /* Adaptation responsive */
+  @media (max-width: 600px) {
+    .project-card {
+      flex-basis: calc(100% - 30px); /* Une carte par ligne sur mobile */
+    }
+  
+    h3 {
+      font-size: 1.4rem;
+    }
+  
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .project-card {
+      flex-basis: calc(50% - 30px); /* Deux cartes par ligne sur tablette */
+    }
+  }
