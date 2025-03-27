@@ -13,7 +13,7 @@ const Footer = () => {
 
             {/* Texte au centre */}
             <div className="content">
-                <p>&copy; 2025 My Portfolio. All Rights Reserved.</p>
+                <p>&copy; 2025 LucaScript. All Rights Reserved.</p>
             </div>
 
             {/* Liens sociaux à droite */}

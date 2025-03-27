@@ -26,6 +26,37 @@
     animation: move-cover-image 1s forwards ease-in-out;
   }
   
+  .rocket {
+    width: 100px;
+    position: absolute;
+    bottom: 10%;
+    left: -100px;
+    animation: fly-horizontal 4s linear infinite;
+  }
+  
+  @keyframes fly-horizontal {
+    0% {
+      transform: translateX(-100px);
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+  
+  .rocket-launch {
+    animation: fade-out 1s ease-out forwards;
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+
   /* Contenu de la page */
   .fullscreen {
     position: fixed;
@@ -135,7 +166,7 @@
     h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
-      color: #a5b4fc;
+      color: #ffffff;
       width: 100%;
       font-weight: bolder;
       text-align: left;
@@ -164,7 +195,7 @@
   
     img {
       width: 300px;
-      border-radius: 20%;
+      border-radius: 50%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
   }

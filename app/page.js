@@ -1,61 +1,21 @@
-'use client';
+"use client";
+
 import { useEffect, useState } from 'react';
 import '../styles/HomePage.scss';
 
 export default function HomePage() {
-  const welcomeTexts = ['Welcome to My Portfolio', 'Bienvenue sur mon Portfolio'];
-  const [randomText, setRandomText] = useState('');
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [startAnimation, setStartAnimation] = useState(false); // Déclenche l'animation de couverture
-  const [projects, setProjects] = useState([]); // Chargement des projets depuis JSON
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    // Texte aléatoire
-    const index = Math.floor(Math.random() * welcomeTexts.length);
-    setRandomText(welcomeTexts[index]);
-
-    // Chargement des projets
     fetch('/projects.json')
       .then((response) => response.json())
       .then((data) => setProjects(data))
       .catch((error) => console.error('Erreur lors du chargement des projets :', error));
   }, []);
 
-  const handleMouseMove = (e) => {
-    setMousePosition({
-      x: (e.clientX / window.innerWidth) * 2 - 1,
-      y: (e.clientY / window.innerHeight) * 2 - 1,
-    });
-  };
-
-  const handleCTA = () => {
-    setStartAnimation(true); // Déclenche l'animation
-  };
-
   return (
     <div className="homepage">
-      {/* Section de couverture */}
-      <div
-        className={`cover fullscreen ${startAnimation ? 'move-image' : ''}`}
-        onMouseMove={handleMouseMove}
-        style={{
-          transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`,
-          transition: 'transform 0.1s ease-out',
-        }}
-      >
-        <main className="welcome-container">
-          <h1 className="welcome-text">
-            <span className="typing-effect">{randomText}</span>
-            <span className="wave">👋</span>
-          </h1>
-          <button className="cta-button" onClick={handleCTA}>
-            Explorez mon travail 🤗​
-          </button>
-        </main>
-      </div>
-
-      {/* Contenu principal toujours présent */}
-      <div className={`main-content ${startAnimation ? 'show' : 'hidden'}`}>
+      <div className="main-content show">
         <main>
           <section id="about">
             <div className="about-text">
@@ -66,7 +26,7 @@ export default function HomePage() {
               </p>
               <ul>
                 <li><strong>Front-end :</strong> HTML, CSS, JavaScript, React, Next.js</li>
-                <li><strong>Back-end :</strong> Node.js, </li>
+                <li><strong>Back-end :</strong> Node.js</li>
                 <li><strong>Techniques avancées :</strong> Optimisation des performances, SEO, responsive design</li>
               </ul>
               <p>
